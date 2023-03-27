@@ -6,8 +6,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 
 // Internal imports
-const { notFoundHandler, errorHandler} = require("./middlewares/common/errorHandler");
+const { notFoundHandler, errorHandler } = require("./middlewares/common/errorHandler");
 const loginRouter = require("./router/loginRouter");
+const usersRouter = require("./router/usersRouter");
+const inboxRouter = require("./router/inboxRouter");
 
 const app = express();
 dotenv.config();
@@ -41,8 +43,8 @@ mongoose
 
     // routing setup
     app.use('/', loginRouter);
-    // app.use('/users', usersRouter);
-    // app.use('/inbox', inboxRouter);
+    app.use('/users', usersRouter);
+    app.use('/inbox', inboxRouter);
 
     // Not found Handling
     app.use(notFoundHandler);
