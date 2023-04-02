@@ -34,7 +34,8 @@ const addUserValidators = [
     .withMessage("Must be valid Bangladeshi mobile number")
     .custom(async (value) => {
       try {
-        const user = User.findOne({ mobile: value });
+        const user = await User.findOne({ mobile: value });
+        console.log("The user", user);
         if (user) {
           throw createHttpError("Mobile number already used!");
         }

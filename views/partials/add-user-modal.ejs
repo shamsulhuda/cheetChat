@@ -1,6 +1,8 @@
 <div class="modal-wrapper" id="add-user-modal">
   <div class="modal">
-    <a href="#" onclick="closeModal()" class="modal-close">+</a>
+    <a href="javascript:void(0);" onclick="closeModal()" class="modal-close"
+      >+</a
+    >
     <div class="modal-title">
       <h2>Create New User</h2>
     </div>
@@ -55,13 +57,14 @@
 
     // clear all errors first
     const errorPlaceholder = document.querySelectorAll("p.error");
-    for (let i = 0; i < errorPlaceholder.length; i++) {
-      errorPlaceholder[i].style.display = "none";
-    }
+    errorPlaceholder.forEach((pElm) => {
+      pElm.style.display = "none";
+    });
+
     const inputErrors = document.querySelectorAll("input.error");
-    for (let j = 0; j < inputErrors.length; j++) {
-      inputErrors[j].classList.remove("erorr");
-    }
+    inputErrors.forEach((elm) => {
+      elm.classList.remove("erorr");
+    });
 
     // prepare the form data
     const formData = new FormData(form);
